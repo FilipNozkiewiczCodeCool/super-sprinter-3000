@@ -54,6 +54,20 @@ def add_story_to_update():
     return render_template('update_data.html',user_stories=user_stories)
 
 
+
+@app.route("/story/<story_id>", methods=["GET", "PUT", "DELETE"])
+def single_story(story_id):
+    if request.method == "DELETE":
+        # sprawdz czy id istnieje
+        # jesli tak to usun caly rekord
+        # jesli nie istnieje to wywal 404
+        pass
+    elif request.method == "PUT":
+        pass
+    else:
+        return render_template('story.html')
+
+
 @app.route("/add_delete_story", methods=["GET"])
 def add_delete_story():
     user_stories = dh.read_stats()

@@ -87,8 +87,6 @@ def update_story(update_data):
             f.write(f"\n{s}")
 
 
-
-
 def delete_story(delete_id):
     user_story = read_stats()
     # print(user_story)

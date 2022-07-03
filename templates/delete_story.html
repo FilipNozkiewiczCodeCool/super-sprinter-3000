@@ -5,7 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-<form action="http://127.0.0.1:8000/list">
+
+<!-- <a href="{#  {{ url_for('') }} #}">link do tego i tego</a> -->
+<form action="{{ url_for('route_list') }}">
      <input type="submit" value="Back to list">
  </form>
 
@@ -41,7 +43,7 @@
         </tr>
         {% for value in user_stories %}
             <tr>
-                <td>{{ value["id"] }}</td>
+                <td>{{ value["id"] }}<form action="{{ url_for('single_story', story_id=value['id']) }}/" method="DELETE"><input type="submit"></form>  </td>
                 <td>{{ value["title"] }}</td>
                 <td>{{ value["user_story"] }}</td>
                 <td>{{ value["acceptance_criteria"] }}</td>
