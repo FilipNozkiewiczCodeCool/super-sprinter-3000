@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, Response
 #from test.data_test import *
 import data_handler
 
@@ -27,6 +27,13 @@ def route_list():
     user_stories = list_of_dict #data_handler.get_all_user_story()
 
     return render_template('list.html', user_stories=user_stories)
+
+@app.route('/story', methods = ["GET","POST"])
+def story():
+    data = request.form.to_dict()
+    list_of_dict.append(data)
+    return Response("Story succesfuly created", status=201)
+
 
 if __name__ == '__main__':
     app.run(
