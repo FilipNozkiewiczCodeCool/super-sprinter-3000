@@ -5,7 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-{{ user_stories }}
     <table>
         <tr>
             <th>Id</th>
@@ -16,15 +15,18 @@
             <th>Estimation</th>
             <th>Status</th>
         </tr>
+        {% for value in user_stories %}
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ value["id"] }}</td>
+                <td>{{ value["story_title"] }}</td>
+                <td>{{ value["user_story"] }}</td>
+                <td>{{ value["acceptance_criteria"] }}</td>
+                <td>{{ value["business_value"] }}</td>
+                <td>{{ value["estimation"] }}</td>
+                <td>{{ value["status"] }}</td>
+
             </tr>
+        {% endfor %}
     </table>
 </body>
 </html>
