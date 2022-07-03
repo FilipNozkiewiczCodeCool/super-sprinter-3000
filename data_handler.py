@@ -9,11 +9,13 @@ STATUSES = ['planning', 'todo', 'in progress', 'review', 'done']
 def get_all_user_story():
     return []
 
+
 def write_data(data: dict):
     with open('test.csv', 'a+') as f:
         #f.write()
         f.write(f"\n{data['id']},{data['title']},{data['user_story']},{data['acceptance_criteria']},{data['business_value']},{data['estimation']},{data['status']}")
         #print(f"{data['id']},{data['title']},{data['user_story']},{data['acceptance_criteria']},{data['business_value']},{data['estimation']},{data['status']}")
+
 
 d ={"id": 12,
                  "title": "wyslij story title",
@@ -23,7 +25,18 @@ d ={"id": 12,
                  "estimation": "wyslij estimation",
                  "status": "wyslij status"
                  }
-                
-def write():
-    with open('test.csv', 'r+') as data_file:
-       pass 
+
+
+def read_stats():
+    counter = {}
+    with open('test.csv', 'r') as data_file:
+        for i in data_file.readlines():
+            data_file[0]
+            splitted_row = i.strip().split(",")
+            for j in splitted_row:
+                counter[splitted_row[0]] = int(splitted_row[1])
+        return counter
+
+
+print(read_stats())
+
