@@ -1,1 +1,32 @@
-...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Story Title</th>
+            <th>User Story</th>
+            <th>Acceptance Criteria</th>
+            <th>Business value</th>
+            <th>Estimation</th>
+            <th>Status</th>
+        </tr>
+        {% for value in user_stories %}
+            <tr>
+                <td>{{ value["id"] }}</td>
+                <td>{{ value["story_title"] }}</td>
+                <td>{{ value["user_story"] }}</td>
+                <td>{{ value["acceptance_criteria"] }}</td>
+                <td>{{ value["business_value"] }}</td>
+                <td>{{ value["estimation"] }}</td>
+                <td>{{ value["status"] }}</td>
+
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
