@@ -28,15 +28,26 @@ d ={"id": 12,
 
 
 def read_stats():
-    counter = {}
+    user_stories = []
     with open('test.csv', 'r') as data_file:
-        for i in data_file.readlines():
-            data_file[0]
-            splitted_row = i.strip().split(",")
-            for j in splitted_row:
-                counter[splitted_row[0]] = int(splitted_row[1])
-        return counter
+        rows = data_file.readlines()
+        headers = rows[0].strip().split(",")
+        print(headers)
+        for row in rows[1::]:
+            splited_row = row.strip().split(",")
+            story = {}
+            for h,r in zip(headers, splited_row):
+                story[h] = r
+            user_stories.append(story)
+        return user_stories
 
 
-print(read_stats())
+        #     data_file[0]
+        #     splitted_row = i.strip().split(",")
+        #     for j in splitted_row:
+        #         counter[splitted_row[0]] = int(splitted_row[1])
+        # return counter
+
+
+read_stats()
 
