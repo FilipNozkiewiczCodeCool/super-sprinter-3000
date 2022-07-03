@@ -11,7 +11,7 @@ def get_all_user_story():
 
 
 def write_data(data: dict):
-    with open('test.csv', 'a+') as f:
+    with open(DATA_FILE_PATH, 'a+') as f:
         #f.write()
         f.write(f"\n{data['id']},{data['title']},{data['user_story']},{data['acceptance_criteria']},{data['business_value']},{data['estimation']},{data['status']}")
         #print(f"{data['id']},{data['title']},{data['user_story']},{data['acceptance_criteria']},{data['business_value']},{data['estimation']},{data['status']}")
@@ -29,10 +29,10 @@ d ={"id": 12,
 
 def read_stats():
     user_stories = []
-    with open('test.csv', 'r') as data_file:
+    with open(DATA_FILE_PATH, 'r') as data_file:
         rows = data_file.readlines()
         headers = rows[0].strip().split(",")
-        print(headers)
+        # print(headers)
         for row in rows[1::]:
             splited_row = row.strip().split(",")
             story = {}
@@ -49,5 +49,71 @@ def read_stats():
         # return counter
 
 
-read_stats()
+ud ={"id": 2,
+                 "title": "wyslij story title",
+                 "user_story": "wyslij user story",
+                 "acceptance_criteria": "wyslij cryteria",
+                 "business_value": "wyslij business value",
+                 "estimation": "wyslij estimation",
+                 "status": "wyslij status"
+                 }
+
+
+def update_story(update_data):
+    user_story = read_stats()
+    # print(user_story)
+    for i,value in enumerate(user_story):
+        if int(value["id"]) == int(update_data["id"]):
+            user_story[i] = update_data
+    with open(DATA_FILE_PATH, 'w+') as f:
+        header = list(user_story[0].keys())
+        s = ""
+        for i,v in enumerate(header):
+            if i == len(header)-1:
+                s += str(v)
+            else:
+                s += str(v) + ","
+        f.write(s)
+        for i,v in enumerate(user_story[0::]):
+            tab = []
+            for j,val in v.items():
+                tab.append(val)
+            s = ""
+            for i,elem in enumerate(tab):
+                if i == len(tab)-1:
+                    s += str(elem)
+                else:
+                    s += str(elem) + ","
+            f.write(f"\n{s}")
+
+
+
+
+def delete_story(delete_id):
+    user_story = read_stats()
+    # print(user_story)
+    for i,value in enumerate(user_story):
+        if int(value["id"]) == int(delete_id):
+            del user_story[i]
+    with open(DATA_FILE_PATH, 'w+') as f:
+        header = list(user_story[0].keys())
+        s = ""
+        for i, v in enumerate(header):
+            if i == len(header) - 1:
+                s += str(v)
+            else:
+                s += str(v) + ","
+        f.write(s)
+        for i,v in enumerate(user_story[0::]):
+            tab = []
+            for j,val in v.items():
+                tab.append(val)
+            s = ""
+            for i, elem in enumerate(tab):
+                if i == len(tab) - 1:
+                    s += str(elem)
+                else:
+                    s += str(elem) + ","
+            f.write(f"\n{s}")
+
 

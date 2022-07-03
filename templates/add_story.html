@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+ <form action="http://127.0.0.1:8000/list">
+     <input type="submit" value="Back to list">
+ </form>
+
+ <form action="http://127.0.0.1:8000/story", method="POST">
+     <table>
+        <tr>
+            <td>ID: </td>
+            <td><input type="number" name="id"></td>
+        </tr>
+         <tr>
+            <td>Title: </td>
+            <td><input type="text" name="title"></td>
+        </tr>
+         <tr>
+            <td>User Story: </td>
+            <td><input type="text" name="user_story"></td>
+        </tr>
+         <tr>
+            <td>Acceptacne Criteria: </td>
+            <td><input type="text" name="acceptance_criteria"></td>
+        </tr>
+         <tr>
+            <td>Business Value: </td>
+            <td><input type="text" name="business_value"></td>
+        </tr>
+         <tr>
+            <td>Estimation: </td>
+            <td><input type="text" name="estimation"></td>
+        </tr>
+         <tr>
+            <td>Status: </td>
+            <td><input type="text" name="status"></td>
+        </tr>
+         <tr style="text-align: right; ">
+             <td></td>
+             <td ><input type="submit" value="Wyslij"></td>
+         </tr>
+
+
+     </table>
+
+    </form>
+
+</body>
+</html>
