@@ -26,4 +26,4 @@ d ={"id": 12,
                 
 def write():
     with open('test.csv', 'r+') as data_file:
-        
+       pass 
